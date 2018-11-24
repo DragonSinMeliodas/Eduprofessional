@@ -17,7 +17,7 @@ $perfTime = $_GET["perfTime"]
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header clearfix">
-                    <h2 class="pull-left">Production Details</h2>
+                    <h2 class="pull-left">Seats Details</h2>
                 </div>
                 <form action="book.php" method="post">
                     <div class="row">
@@ -55,7 +55,7 @@ $perfTime = $_GET["perfTime"]
                         echo "<p class='lead'><em>No records were found.</em></p>";
                     }
                 } else{
-                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
                 }
 
                 // Close connection
@@ -63,14 +63,17 @@ $perfTime = $_GET["perfTime"]
                 ?>
                         </div>
                         <div class="col-md-6">
+                            <?php echo "<input type='hidden' name='prefDate' value='$perfDate'>"; ?>
+                            <?php echo "<input type='hidden' name='prefTime' value='$perfTime'>"; ?>
+                            <?php echo "<input type='hidden' name='totalPrice'>"; ?>
                             <div class="form-group">
-                                Email = <input type="text" \>
+                                Email = <input type="email" name="email" required \>
                             </div>
                             <div class="form-group">
-                                Total = <input type="text" id="total" disabled>
+                                Total = <input type="text" name="total" id="total" disabled>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Check">
+                                <input type="submit" value="Book">
                             </div>
                         </div>
                     </div>
@@ -91,6 +94,7 @@ $perfTime = $_GET["perfTime"]
             }
         }
         document.getElementById('total').value = totalPrice;
+        document.getElementById('totalValue').value = totalPrice;
     }
     
     function calculatePrice(data) {

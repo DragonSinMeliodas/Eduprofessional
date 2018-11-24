@@ -22,6 +22,6 @@
     </style>
 </head>
 <body>
-<div id="heading">
+<div id="heading" class="wrapper">
     <h2>Theatre Booking System</h2>
 </div>
